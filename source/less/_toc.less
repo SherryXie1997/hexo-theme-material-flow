@@ -1,0 +1,55 @@
+.toc-wrapper {
+    position: fixed;
+    top: @header-height + @gap * 2;
+    right: 50%;
+    margin-right: @container-width/2 + @gap;
+
+    // prevent toc is too heigh.
+    overflow: auto;
+    max-height: ~"calc(50%)";
+    @media (max-width: @container-width + 2 * @side-width + 2 * @gap) {
+        left: -@side-width;
+        margin-right: 0;
+        // &.active{
+        //   transform: translateX(-@side-width);
+        // }
+    }
+
+    // @media(max-width: @on-phone){
+    //   left: -@side-width;
+    //   margin-right: @gap;
+    //   &.active{
+    //     transform: translateX(-@side-width);
+    //   }
+    // }
+
+    width: @side-width;
+    &:extend(.z-depth-1);
+    padding: @gap;
+    border-left: 3px solid @secondary-color;
+    background: @white;
+
+    a {
+        display: inline-block;
+
+        &:hover, &:active, &.active {
+            color: @accent-color;
+        }
+    }
+
+    ol {
+        &.toc-child {
+            padding-left: @gap;
+        }
+
+        li {
+            list-style: none;
+            width: auto;
+            &:extend(.txt-ellipsis);
+        }
+    }
+
+    &:empty {
+        display: none;
+    }
+}

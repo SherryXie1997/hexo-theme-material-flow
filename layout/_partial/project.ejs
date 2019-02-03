@@ -1,0 +1,50 @@
+<article class="post reveal" itemscope itemprop="blogPost">
+    <section class="article typo">
+        <div id="entry" class="article-entry" itemprop="articleBody">
+        </div>
+    </section>
+    <script>
+        (function () {
+            let projects = [];
+            const entry = document.getElementById('entry');
+            const createElements = project => {
+                h3 = document.createElement('h3');
+                h3.innerHTML = project.description;
+                entry.appendChild(h3);
+
+                image = document.createElement('img');
+                image.setAttribute("src", project.url);
+                entry.appendChild(image);
+            };
+            const removeElements = elem => {
+                while (elem.firstChild) {
+                    elem.removeChild(elem.firstChild);
+                }
+            };
+            const initialize = () => {
+                removeElements(entry);
+                projects.forEach(createElements);
+            };
+
+            fetch('./data.json')
+                .then(res => res.json())
+                .then(data => {
+                    projects = data.projects;
+                    initialize();
+                    lazyImage();
+                    wrapImage();
+                    loadImage();
+                });
+        }())
+    </script>
+
+
+
+</article>
+
+<script>
+	window.subData = {
+		title: '<%= post.title %>',
+		tools: true
+	}
+</script>
