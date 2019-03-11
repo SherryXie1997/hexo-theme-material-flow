@@ -70,8 +70,8 @@ social:
 
 valine:
   enable: false
-  appId: yNQ57noTg3jnFJvLawvv2SrO-gzGzoHsz
-  appKey: kufPfLKXILeMCFpjgJRz4Hd1
+  appId: 
+  appKey: 
 
 reading:
   enable: true
