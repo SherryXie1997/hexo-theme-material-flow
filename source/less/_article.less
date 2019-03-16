@@ -22,7 +22,7 @@
     img {
         position: relative;
         display: block;
-        margin: 0 auto;
+        // margin: 0 auto;
         background: white;
         transition: all 0.24s ease;
         @media (max-width: @on-phone) {
@@ -64,6 +64,20 @@
     a {
         color: darken(@accent-color, 2%);
 
+        &:hover {
+            color: darken(@accent-color, 3%);
+            background: fade(@accent-color, 10%);
+        }
+
+        &:active {
+            background: fade(@accent-color, 20%);
+            color: @white;
+        }
+    }
+
+    .douban a {
+        padding: 0 5px;
+        color: darken(@accent-color, 2%);
         &:hover {
             color: darken(@accent-color, 3%);
             background: fade(@accent-color, 10%);

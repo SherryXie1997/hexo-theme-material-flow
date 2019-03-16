@@ -1,0 +1,96 @@
+{
+  "mouseover": [
+    {
+      "selector": ".title a",
+      "text": [
+        "要看看 {text} 么？"
+      ]
+    },
+    {
+      "selector": ".u-search-input",
+      "text": [
+        "在找什么东西呢，需要帮忙吗？"
+      ]
+    },
+    {
+      "selector": "#gitalk-container",
+      "text": [
+        "认真填写哦，垃圾评论是禁止事项！"
+      ]
+    },
+    {
+      "selector": ".prev",
+      "text": [
+        "去上一页看看吧。"
+      ]
+    },
+    {
+      "selector": ".next",
+      "text": [
+        "去下一页看看吧。"
+      ]
+    },
+    {
+      "selector": "#aplayer-fixed",
+      "text": [
+        "点击即可我的网易云歌单哦~"
+      ]
+    },
+    {
+      "selector": ".poem",
+      "text": [
+        "这里会不断切换新的诗词哦~"
+      ]
+    },
+    {
+      "selector": ".essay",
+      "text": [
+        "点击可以随机获得一篇文章哦~"
+      ]
+    },
+    {
+      "selector": ".waifu #live2d",
+      "text": [
+        "干嘛呢你，快把手拿开！"
+      ]
+    },
+    {
+      "selector": ".waifu .fa-window-close",
+      "text": [
+        "要到了说再见的时候吗？"
+      ]
+    },
+    {
+      "selector": ".waifu .fa-image",
+      "text": [
+        "可以更换成bing壁纸背景哦~"
+      ]
+    },
+    {
+      "selector": ".waifu .fa-music",
+      "text": [
+        "切换音乐播放模式~"
+      ]
+    },
+    {
+      "selector": ".waifu .fa-comment",
+      "text": [
+        "猜猜我要说什么？"
+      ]
+    },
+    {
+      "selector": ".waifu .fa-eraser",
+      "text": [
+        "点击关闭所有页面特效，纯净模式哦！"
+      ]
+    }
+  ],
+  "click": [
+    {
+      "selector": ".waifu #live2d",
+      "text": [
+        "⌇●﹏●⌇"
+      ]
+    }
+  ]
+}

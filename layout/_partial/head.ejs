@@ -1,44 +1,104 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>
-    <%= config.title %>
-  </title>
+  <title><%= config.title %></title>
   <meta name="description" content="<%= config.description %>" />
-  <meta name="keywords" content="<%=(config.keywords||[]).join(',') %>" />
+  <meta name="keywords" content="<%= (config.keywords || []).join(',') %>" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <%- favicon_tag(config.favicon) %>
   <%- feed_tag(config.feed.path, {title: config.title}) %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%- open_graph({
+    twitter_id: theme.twitter,
+    google_plus: theme.google_plus,
+    fb_admins: theme.fb_admins,
+    fb_app_id: theme.fb_app_id
+  }) %>
+  <meta name="baidu-site-verification" content="RcgDKTGgGT" />
+  <meta name="google-site-verification" content="uLxUm5wTv1GofV8_j9CYt1DPYi8JHoOwA1ZncffgYnw" />
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134676129-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-  <link href="https://cdn.bootcss.com/node-waves/0.7.6/waves.min.css" rel="stylesheet">
-  <!-- fancybox support -->
-  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
-  <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-  <link href="https://cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.css" rel="stylesheet">
-  <script src="https://cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.js"></script>
-  <%- js('js/image') %>
-  <% if (theme.valine.enable === true && theme.valine.appId && theme.valine.appKey) { %>
+    gtag('config', 'UA-134676129-1');
+  </script>
+  <%- js('js/console') %>
+
+  <link href="//fonts.loli.net/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="//fonts.loli.net/css?family=Roboto+Mono" rel="stylesheet">
+
+  <%- js('js/font') %>
+
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+
+  <link href="//cdn.bootcss.com/node-waves/0.7.6/waves.min.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/4.0.5/scrollreveal.min.js"></script>
+
+  <script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+
+  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/fitvids/1.2.0/jquery.fitvids.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <link href="//cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.js"></script>
+
+  <% if (theme.gitalk.enable) { %>
+  <link href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+  <% } %>
+
+  <% if (theme.valine.enable) { %>
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <% } %>
-  <script src="https://cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
-  <script src="https://cdn.bootcss.com/scrollReveal.js/4.0.5/scrollreveal.min.js"></script>
+
+  <% if (theme.disqus.enable) { %>
+  <link href="//unpkg.com/disqusjs@1.1/dist/disqusjs.css" rel="stylesheet">
+  <script src="//unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+  <% } %>
+
+  <% if (theme.leancloud_visitors.enable) { %>
+  <script src="//cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <% } %>
+
+  <% if (theme.aplayer.enable) { %>
+  <link href="//cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
+  <% } %>
+
+  <script src="//cdn.bootcss.com/PreloadJS/1.0.1/preloadjs.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
   <script>
-    var SEARCH_SERVICE = "<%- theme.search.service %>";
-    var ROOT = "<%- config.root %>" || "/";
+    let ROOT = "<%= config.root %>" || "/";
     if (!ROOT.endsWith('/')) ROOT += '/';
-  </script>
-  <%- js('js/search.js') %>
-  <%- js('js/app.js') %>
-  <%- css('style.css') %>
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width = num + "%";
+    let CONFIG = {
+      search_service: "<%= theme.search.service %>",
+      since: '<%= theme.footer.since %>',
+      mathjax_cdn: '<%= theme.mathjax.cdn %>',
+      poem_api: '<%= theme.poem.api %>'
     }
   </script>
+
+  <%- js('js/image') %>
+  <%- js('js/search') %>
+  <%- js('js/since') %>
+  <%- js('js/app') %>
+  <% if (theme.word_count.enable) { %>
+  <%- js('js/wordcount') %>
+  <% } %>
+  <% if (theme.leancloud_visitors.enable) { %>
+  <%- js('js/leancloud') %>
+  <% } %>
+  <%- js('js/tagcloud') %>
+  <%- js('js/tagcanvas') %>
+  <%- css('style.css') %>
 </head>

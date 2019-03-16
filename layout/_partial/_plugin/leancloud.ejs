@@ -1,0 +1,14 @@
+<% if (theme.leancloud_visitors.enable) { %>
+<span id="<%= url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%= post.title %>">
+    <time>#<span class="leancloud-visitors-count"></span></time>
+</span>
+<script>AV.initialize("<%= theme.leancloud_visitors.appId %>", "<%= theme.leancloud_visitors.appKey %>");</script>
+<script>
+    $(function () {
+        var Counter = AV.Object.extend("Counter");
+        if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+        }
+    });
+</script>
+<% } %>

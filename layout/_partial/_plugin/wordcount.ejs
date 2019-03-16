@@ -1,0 +1,7 @@
+<% if (theme.word_count.enable) { %>
+<time>#<span id="wordcount"></span></time>
+<time>#<span id="min2read"></span></time>
+<script>
+  count('<%= JSON.stringify(strip_html(post.content)) %>');
+</script>
+<% } %>

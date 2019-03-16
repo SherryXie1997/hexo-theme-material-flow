@@ -1,30 +1,19 @@
 .toc-wrapper {
+    z-index:3;
+    &:extend(.z-depth-2);
     position: fixed;
     top: @header-height + @gap * 2;
     right: 50%;
-    margin-right: @container-width/2 + @gap;
-
+    margin-right: -@container-width/2;
     // prevent toc is too heigh.
     overflow: auto;
     max-height: ~"calc(50%)";
-    @media (max-width: @container-width + 2 * @side-width + 2 * @gap) {
-        left: -@side-width;
-        margin-right: 0;
-        // &.active{
-        //   transform: translateX(-@side-width);
-        // }
+    @media (max-width: @container-width + 2 * @gap) {
+        display: none;
     }
 
-    // @media(max-width: @on-phone){
-    //   left: -@side-width;
-    //   margin-right: @gap;
-    //   &.active{
-    //     transform: translateX(-@side-width);
-    //   }
-    // }
-
     width: @side-width;
-    &:extend(.z-depth-1);
+
     padding: @gap;
     border-left: 3px solid @secondary-color;
     background: @white;
@@ -32,7 +21,7 @@
     a {
         display: inline-block;
 
-        &:hover, &:active, &.active {
+        &:hover, &:active {
             color: @accent-color;
         }
     }

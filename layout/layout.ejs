@@ -3,37 +3,46 @@
 
 <%- partial('_partial/head') %>
 
-<% if (page.type === 'gallery' || page.type === 'project') { %>
-<% } else { %>
-<script>
-  $(document).ready(function () {
-    lazyImage();
-    wrapImage();
-    loadImage();
-  });
-</script>
-<% } %>
-
 <body>
-  <div id="loading-bar-wrapper">
-    <div id="loading-bar"></div>
-  </div>
-  <script>setLoadingBarProgress(20)</script>
+  <script>NProgress.start();</script>
+  <% if (theme.bing.enable) { %>
+  <%- partial('_partial/_plugin/bing') %>
+  <% } %>
   <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
-  <script>setLoadingBarProgress(40);</script>
   <div class="l_body">
     <div class='container clearfix'>
-      <div class='l_main'>
+      <div id='l_pjax' class='l_main'>
         <%- body %>
+        <%- partial('_partial/_plugin/mathjax') %>
       </div>
       <aside class='l_side'>
         <%- partial('_partial/side') %>
       </aside>
-      <script>setLoadingBarProgress(60);</script>
     </div>
   </div>
   <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
-  <script>setLoadingBarProgress(100);</script>
+
+  <% if (theme.canvas_nest.enable) { %>
+  <%- partial('_partial/_plugin/canvas_nest') %>
+  <% } %>
+
+  <% if (theme.evanyou.enable) { %>
+  <%- partial('_partial/_plugin/evanyou') %>
+  <%- js('js/evanyou') %>
+  <% } %>
+
+  <% if (theme.aplayer.enable) { %>
+  <%- partial('_partial/_plugin/aplayer') %>
+  <%- js('js/aplayer') %>
+  <% } %>
+
+  <% if (theme.live2d.enable) { %>
+  <%- partial('_partial/_plugin/live2d') %>
+  <%- js('js/live2d') %>
+  <%- js('js/live2drender') %>
+  <% } %>
+  <%- js('js/pjax') %>
+  <script>NProgress.done();</script>
 </body>
 
 </html>

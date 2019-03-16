@@ -1,62 +1,103 @@
-# Search
 search: 
   enable: true
   service: hexo # google/hexo/algolia/azure/baidu
 
+sitemap:
+  path: sitemap.xml
 
-# navigation menu
+baidusitemap:
+  path: baidusitemap.xml
+
+live2d:
+  enable: false
+
+bing:
+  enable: false
+  api: https://api.isoyu.com/bing_images.php
+
+poem:
+  enable: true
+  api: https://sdk.jinrishici.com/v2/browser/jinrishici.js
+
+essay:
+  enable: true
+  api: https://interface.meiriyiwen.com/article/random?dev=1
+
+mathjax:
+  enable: true
+  cdn: https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML
+
+canvas_nest: 
+  enable: false
+  zIndex: -1
+  count: 150
+  cdn: https://cdn.bootcss.com/canvas-nest.js/2.0.4/canvas-nest.js
+
+aplayer: 
+  enable: true
+
+evanyou:
+  enable: true
+
+word_count:
+  enable: true
+
+leancloud_visitors:
+  enable: true
+  appId: yNQ57noTg3jnFJvLawvv2SrO-gzGzoHsz
+  appKey: kufPfLKXILeMCFpjgJRz4Hd1
+  
+
 menu:
-  - name: Recent
-    slug: recent
-    url: /recent
+  # - name: Recent
+  #   slug: recent
+  #   url: /recent/
   - name: Home
     slug: home
     url: /
   - name: Archives
     slug: archives
-    url: /archives
-  - name: Gallery
-    slug: gallery
-    url: /gallery
+    url: /archives/
   - name: Timeline
     slug: timeline
-    url: /timeline
-  - name: Project
-    slug: project
-    url: /project
+    url: /timeline/
   # - name: Tagcloud
   #   slug: tagcloud
-  #   url: /tagcloud
-  # - name: Link
-  #   slug: link
-  #   url: /link
+  #   url: /tagcloud/
+  - name: Gallery
+    slug: gallery
+    url: /gallery/
+  - name: Project
+    slug: project
+    url: /project/
   - name: About
     slug: about
-    url: /about
+    url: /about/
 
-# widgets
 widgets:
   - about
+  - poem
+  - essay
   - categories
   - tagcloud
-  - music
-  - links
+  # - links
 
-music_id: 27461822
-
-
-# links info
 links:
+  - name: NetEase Music
+    url: https://music.163.com/#/user/home?id=35340863
   - name: Zhejiang Univ
     url: http://www.zju.edu.cn
   - name: CKC 
     url: http://ckc.zju.edu.cn/
+  - name: yuque
+    url: https://www.yuque.com/96486d9b
 
-# Less
 less:
   compress: true
 
 social:
+- slug: envelope
+  url: mailto:527892245@qq.com
 - slug: github
   url: https://github.com/96486d9b
 - slug: facebook
@@ -65,14 +106,42 @@ social:
   url: https://www.instagram.com/96486d9b
 - slug: twitter
   url: https://twitter.com/bryce04343695
+# - slug: qq
+#   url: http://wpa.qq.com/msgrd?v=3&uin=527892245&site=qq&menu=yes
+- slug: wechat
+  url: /assets/wechat.jpg
 - slug: rss
   url: /atom.xml
+
+comment:
+  enable: true
 
 valine:
   enable: false
   appId: yNQ57noTg3jnFJvLawvv2SrO-gzGzoHsz
   appKey: kufPfLKXILeMCFpjgJRz4Hd1
 
+disqus:
+  enable: false
+  shortname: 96486d9b
+  apikey: yaRwsO6oKClzmTK24d6yGtrOwmZ0oiMlL7rJXXNNDA19eBo3wclVr1ljtZa7M31U
+  admin: 96486d9b
+  adminLabel: 山豆几石叶
+
+gitalk:
+  enable: true
+  owner: 96486d9b
+  repo: 96486d9b.github.io
+  admin: 96486d9b
+  language: zh-CN
+  clientID: f53a4231c419762428d1
+  clientSecret: 8408e8a853986f901eb6fb6ed475b9f08d17e053
+
+
+footer:
+  since: 2/16/2018 00:00:00
+  beian: 浙ICP备17021873号
+  
 reading:
   enable: true
   entry_excerpt: 200

@@ -1,17 +1,24 @@
 <% if (page.type === 'timeline') { %>
 <%- partial('_partial/timeline', {post: page, index: false}) %>
-<% } else if (page.type === 'tagcloud'){ %>
+<% } else if (page.type === 'tagcloud') { %>
 <%- partial('_partial/tagcloud', {post: page, index: false}) %>
-<% } else if (page.type === 'link'){ %>
-<%- partial('_partial/link', {post: page, index: false}) %>
-<% } else if (page.type === 'recent'){ %>
+<% } else if (page.type === 'recent') { %>
 <%- partial('_partial/recent', {post: page, index: false}) %>
-<% } else if (page.type === 'gallery'){ %>
+<% } else if (page.type === 'gallery') { %>
 <%- partial('_partial/gallery', {post: page, index: false}) %>
-<% } else if (page.type === 'project'){ %>
-<%- partial('_partial/project', {post: page, index: false}) %>
-<% } else if (page.type === 'no-title'){ %>
+<% } else if (page.type === 'essay') { %>
+<%- partial('_partial/essay', {post: page, index: false}) %>
+<% } else if (page.type === 'project') { %>
+<%- partial('_partial/no-title', {post: page, index: false}) %>
+<% } else if (page.type === 'no-title') { %>
 <%- partial('_partial/no-title', {post: page, index: false}) %>
 <% } else { %>
 <%- partial('_partial/article', {post: page, index: false}) %>
 <% } %>
+
+<script>
+	window.subData = {
+		title: '<%= page.title %>',
+		tools: true
+	}
+</script>

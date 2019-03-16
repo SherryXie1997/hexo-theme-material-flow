@@ -1,7 +1,4 @@
-<% if (post.mathjax){ %>
-<%- partial('mathjax') %>
-<% } %>
-<article id="<%= post.layout %>-<%= post.slug %>" class="post reveal" itemscope itemprop="blogPost">
+<article class="post reveal" itemscope itemprop="blogPost">
 	<section class='meta'>
 		<h2 class="title">
 			<a href="<%- url_for(post.path) %>">
@@ -9,10 +6,14 @@
 			</a>
 		</h2>
 		<time>
-			<%= date(post.date, 'MMM D, YYYY') %>
+			<%= date(post.date, 'MM-DD, YYYY') %>
 		</time>
-		<%- partial('categories',{post:post}) %>
+		<%- partial('_plugin/wordcount', {post: post}) %>
+		<%- partial('_plugin/leancloud') %>
+		<%- partial('_plugin/categories', {post: post}) %>
+		<%- partial('_plugin/update', {post: post}) %>
 	</section>
+
 	<% if (post.toc) { %>
 	<section class="toc-wrapper">
 		<div class='content'>
@@ -20,52 +21,39 @@
 		</div>
 	</section>
 	<% } %>
+
 	<section class="article typo">
 		<div class="article-entry" itemprop="articleBody">
 			<%- post.content %>
 		</div>
 		<% if (post.tags && post.tags.length) { %>
 		<div class="article-tags tags">
-			<% post.tags.each(function(item){ %>
+			<% post.tags.each(function(item) { %>
 			<a href="<%- url_for(item.path) %>">
-				<%=item.name %></a>
-			<%})%>
+				<%= item.name %></a>
+			<% }) %>
 		</div>
 		<% } %>
 
-		<% if (post.prev || post.next){ %>
+		<% if (post.prev || post.next) { %>
 		<div class="art-item-footer">
-			<% if(post.prev){ %>
-			<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i><a href="<%=url_for(post.prev.path)%>" rel="prev"
-				 title="<%=post.prev.title%>">
+			<% if (post.prev) { %>
+			<span class="art-item-left">
+				<a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
 					<%= post.prev.title %>
-				</a></span>
+				</a>
+			</span>
 			<% } %>
-			<% if(post.next){ %>
-			<span class="art-item-right"><a href="<%=url_for(post.next.path) %>" rel="next" title="<%=post.next.title %>">
-					<%=post.next.title  %>
-				</a><i class="icon icon-chevron-thin-right"></i></span>
-			<%} %>
+			<% if (post.next) { %>
+			<span class="art-item-right">
+				<a href="<%=url_for(post.next.path) %>" rel="next" title="<%=post.next.title %>">
+					<%= post.next.title  %>
+				</a>
+			</span>
+			<% } %>
 		</div>
-		<%} %>
+		<% } %>
 	</section>
-
-	<% if (theme.valine.enable === true && theme.valine.appId && theme.valine.appKey) { %>
-	<div id="vcomments"></div>
-	<script>
-		new Valine({
-			el: '#vcomments',
-			appId: "<%= theme.valine.appId %>",
-			appKey: "<%= theme.valine.appKey %>"
-		})
-	</script>
-	<% } %>
-
 </article>
 
-<script>
-	window.subData = {
-		title: '<%= post.title %>',
-		tools: true
-	}
-</script>
+<%- partial('_plugin/comment', {post: post}) %>

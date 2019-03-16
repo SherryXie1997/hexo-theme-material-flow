@@ -2,15 +2,25 @@ const lazyImage = () => {
     $('img').not('.avatar').each(function () {
         let $image = $(this);
         let src = $image.attr('src');
-        $image.attr('class', 'lazy');
+        if ($image.attr('data-original')) {
+            return;
+        }
+        if ($image.attr('class')) {
+            $image.attr('class', $image.attr('class') + " lazy");
+        } else {
+            $image.attr('class', 'lazy');
+        }
         $image.attr('data-original', src);
         $image.removeAttr('src');
     });
 };
 
 const wrapImage = () => {
-    $('img').not('.avatar').each(function () {
+    $('img').not('.avatar').not('#bing_img').each(function () {
         let $image = $(this);
+        if ($image.attr('data-src')) {
+            return;
+        }
         let imageCaption = $image.attr('alt');
         let $imageWrapLink = $image.parent('a');
 
@@ -29,8 +39,15 @@ const wrapImage = () => {
     });
 };
 
+const loadBgImage = () => {
+    $("img[id='bing_img'][class='lazy']").lazyload({
+        effect: 'fadeIn',
+        threshold: 5,
+    });
+}
+
 const loadImage = () => {
-    $("img.lazy").lazyload({
+    $("img.lazy").not("#bing_img").lazyload({
         effect: 'fadeIn',
         threshold: 50,
     });

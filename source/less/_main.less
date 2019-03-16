@@ -6,11 +6,11 @@
     .post-list {
         position: relative;
         margin: 0px auto;
-        columns: 400px;
+        columns: @on-phone/2;
         column-gap: 0;
-        margin: -@gap /2;
+        margin: -@gap/2;
         @media(max-width: @on-phone) {
-            margin: 0;
+            margin: -@gap/2 0;
         }
     }
     #vcomments {
@@ -95,11 +95,12 @@
                 }
             }
             time,
-            .cats {
+            .top,
+            .categories {
                 display: inline-block;
                 font-size: .75rem;
             }
-            .cats {
+            .categories {
                 &:before {
                     display: inline-block;
                     margin: 0 5px;
@@ -112,6 +113,21 @@
                 a {
                     font-weight: bold;
                     color: @secondary-color;
+                }
+            }
+            .top {
+                &:before {
+                    display: inline-block;
+                    margin: 0 5px;
+                    @border-width: 8px;
+                    content: '';
+                    border-top: @border-width/2 solid transparent;
+                    border-bottom: @border-width/2 solid transparent;
+                    border-left: @border-width solid @material-red;
+                }
+                span {
+                    font-weight: bold;
+                    color: @material-red;
                 }
             }
             time {
